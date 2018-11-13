@@ -19,7 +19,7 @@ const withAdminCheck  = WrappedComponent => props => (
 
 export default WrappedComponent => compose(
   connect(
-      ({user}) => ({user})
+      ({auth:{user}}) => ({user})
   ),
   branch(
       ({user})=> user['is_admin'],
