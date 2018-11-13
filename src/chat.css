@@ -1,0 +1,8 @@
+.rcw-conversation-container > .rcw-header {
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+  }
+   
+  .rcw-message > .rcw-response {
+    background-color: black;
+    color: white;
+  }
