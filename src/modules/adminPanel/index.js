@@ -1,20 +1,19 @@
 import React from 'react'
 import { Chart, Axis, Series, Tooltip, Cursor, Line } from "react-charts";
 import {
-  compose, withHandlers, lifecycle,
+  compose, lifecycle
  } from 'recompose'
 import './style.css'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import Axios from 'axios';
-import moment from 'moment'
 import {loadListToChart} from '../../redux/action'
 import styled from 'styled-components'
 import {Row,Col} from 'reactstrap'
 import {isAdmin} from '../../lib'
 import {ClipLoader} from 'react-spinners'
 import withAdminCheck from '../../lib/hoc/withAdminCheck' 
-
+import ImageUploader from 'react-images-upload';
+import FileBase64 from 'react-file-base64'
 const BoundChart = styled.div`
  width:500px;
  height:500px;
@@ -25,20 +24,21 @@ const BoundChart = styled.div`
 const AdminPanel = ({
   history:{push},chart:{isLoading,data:{qtyPerDate}},isAdmin
 }) => (
-    <div className="container"> 
+    <div className="container"> <br/>
   <Row>
     <Col>
         <div class="dropdown">
-              <button class="dropbtn">Select</button>
+              <button class="dropbtn btn">Select</button>
               <div class="dropdown-content">
                   <a onClick={()=>push('/adminpanel/users')}>User</a>
                   <a onClick={()=>push('/adminpanel/bills')}>Bill</a>
                   <a onClick={()=>push('/adminpanel/products')}>Product</a>
               </div>
           </div>
-    </Col>
+    </Col></Row>
+    <Row>
     <Col>
-     <h1>ยอดขาย : วัน</h1>
+     <div className="container" style={{margin:"0 25%"}}><h1>ยอดขาย : วัน</h1>
       { isLoading ?  <ClipLoader
                       //   className={override}
                       sizeUnit={"px"}
@@ -65,9 +65,22 @@ const AdminPanel = ({
                      </Chart>
                    </BoundChart>
                          </Effect>
-    }
+    }</div>
     </Col>
   </Row>
+  <FileBase64
+                            multiple={ true }
+                            onDone={uri => console.log(uri)} 
+                            />
+  <ImageUploader
+                withIcon={true}
+                buttonText='Choose images'
+                onChange={onDrop}
+                imgExtension={['.jpg', '.gif', '.png']}
+                maxFileSize={5242880}
+                withPreview={true}
+            />
+  
   </div>
 )
 export default compose(
@@ -89,6 +102,7 @@ connect(
   })
 )(AdminPanel)
 
+const onDrop = (d,x) => console.log(x);
 
 const Effect = styled.div`
 -webkit-animation: roll-in-left 0.6s ease-out both;
@@ -128,3 +142,5 @@ animation: roll-in-left 0.6s ease-out both;
   }
 }
 `
+
+

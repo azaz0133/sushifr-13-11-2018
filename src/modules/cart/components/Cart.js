@@ -8,7 +8,7 @@ data,remove,index
         <div className="container"><br/>
                     <div className="row" style={{paddingRight:"15px"}}>
                         <div className="col text-center">
-                                <img className="img-responsive" src={data['locationPic']} alt="product" width="220" height="80"></img>
+                                <img className="img-responsive" src={data['locationPic']} alt="product" width="100" height="100"></img>
                         </div>
                         <div className="col text-sm-center text-md-left ">
                             <h4 className="product-name"><strong>{data['name']}</strong></h4>

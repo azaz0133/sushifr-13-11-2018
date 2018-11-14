@@ -12,20 +12,7 @@ import {
 } from '../../../redux/action'
 import {withRouter} from 'react-router-dom'
 import {ClipLoader} from 'react-spinners'
-import styled from 'styled-components'
 import withAdminCheck from '../../../lib/hoc/withAdminCheck'
-
-const BACK = styled.div`
-    background-color: red;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-`
-
 
 const columns = [{
     Header: 'Bill Id',
@@ -68,12 +55,10 @@ const BillsTable = ({
 }) => {
     return(
       <div>
-        <BACK >
-            <button onClick={()=>goBack()} style={{backgroundColor:'red',border: "none"}}>Back</button>
-        </BACK>
+        <button className="btn btn-danger" style={{margin:"20px"}} onClick={()=>goBack()} >Back</button>
 
         <div class="dropdown">
-            <button class="dropbtn">Status</button>
+            <button class="dropbtn btn">Status</button>
             <div class="dropdown-content">
              <a onClick={()=>loadBills()}>All</a>
               <a onClick={()=>loadBillsByStatus('onProgress')}>OnProgress</a>

@@ -2,6 +2,7 @@ import {
  LOAD_USERS_REQUEST,
  LOAD_USERS_SUCCESS
 } from '../action'
+import { CALL_API } from '../../middleware';
 
 const initialstate = [
   {
@@ -26,7 +27,8 @@ export default (state = initialstate , { type, user ,payload}) => {
           address: user.address,
           email: user.email,
           tel: user.tel,
-          is_admin: user.is_admin
+          is_admin: user.is_admin,
+          gallery_id:user.gallery_id
         }
 
       case 'DELETE_SESSION':
@@ -47,3 +49,4 @@ export default (state = initialstate , { type, user ,payload}) => {
         return state
     }
   }
+

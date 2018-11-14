@@ -9,31 +9,16 @@ import {
     loadProducts
   } from '../../../redux/action'
   import {ClipLoader} from 'react-spinners'
-import styled from 'styled-components'
 import {withRouter} from 'react-router-dom'
 import withAdminCheck from '../../../lib/hoc/withAdminCheck'
 
-const BACK = styled.div`
-    background-color: red;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-`
-const Container = styled.div`
-   width:500px;
-`
 const columns = [{
     Header: 'Id',
     accessor: 'id',
-    maxWidth: 50,
+    maxWidth: 60,
     Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
   }, {
     Header: 'name',
-    maxWidth: 250,
     accessor: 'name_en' // String-based value accessors!
   },{
     Header: 'quantity',
@@ -50,10 +35,8 @@ const ProductTable = ({
  product:{items,isLoading},history:{goBack}
 }) => {
     return(
-      <Container >
-                    <BACK >
-                        <button onClick={()=>goBack()} style={{backgroundColor:'red',border: "none"}}>Back</button>
-                    </BACK>
+      <div >
+                        <button className="btn btn-danger" style={{margin:"20px"}} onClick={()=>goBack()} >Back</button>
           {isLoading ? 
                         <div className="container" 
                                 style={{position: "fixed",
@@ -70,12 +53,10 @@ const ProductTable = ({
                             />
                         </div>  :              <ReactTable
                                                 data={items}
-                                                columns={columns}
-                                                SubComponent=
-                                                { row => <div className="container">{row.original.products}</div>}/>
+                                                columns={columns}/>
                                   
         }   
-      </Container>
+      </div>
     )  
 }
 

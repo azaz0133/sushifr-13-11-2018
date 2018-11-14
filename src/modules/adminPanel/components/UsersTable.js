@@ -9,20 +9,8 @@ import {
     loadUsers
   } from '../../../redux/action'
   import {ClipLoader} from 'react-spinners'
-import styled from 'styled-components'
 import {withRouter} from 'react-router-dom'
 import withAdminCheck from '../../../lib/hoc/withAdminCheck'
-
-const BACK = styled.div`
-    background-color: red;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    display: inline-block;
-`
 
 const columns = [{
     Header: 'Id',
@@ -31,11 +19,9 @@ const columns = [{
     Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
   }, {
     Header: 'name',
-    maxWidth: 100,
     accessor: 'first_name' // String-based value accessors!
   },{
     Header: 'username',
-    maxWidth: 100,
     accessor: 'username' // String-based value accessors!
   }, {
     Header: 'tel',
@@ -56,9 +42,7 @@ const UsersTable = ({
 }) => {
     return(
       <div>
-                    <BACK >
-                        <button onClick={()=>goBack()} style={{backgroundColor:'red',border: "none"}}>Back</button>
-                    </BACK>
+                    <button className="btn btn-danger" style={{margin:"20px"}} onClick={()=>goBack()} >Back</button>
           {isLoading ? 
                         <div className="container" 
                                 style={{position: "fixed",

@@ -62,7 +62,7 @@ const ProductCard = ({
                 <div>
                 {cancel ?
                     <button className="btn btn-danger btn3d btn-block" onClick={cancelThis}>Cancel</button>:
-                    <button className="btn btn-info btn3d btn-block" onClick={(e)=>addToCart(id,name_th,location_pic,price,qty,e)}>Add to cart</button>
+                    <button className="btn btn-info btn3d btn-block" onClick={(e)=>addToCart(id,name_th,location_pic,price,qty,e)}>add</button>
                 }
                 {user.is_admin ?
                     <div>
@@ -93,7 +93,7 @@ export default compose(
             setCancel(true)
             setCart(cart.concat({id,name,locationPic,price,qty}))
              if(cart.length>0){
-                 let duplicate = cart.find((element,index) => {
+                 cart.find((element,index) => {
                      if(element.id === id){
                          let dubCart = cart
                          dubCart[index] = {
@@ -106,6 +106,7 @@ export default compose(
                         setCart(dubCart)
                     }
                     else setCart(cart.concat({id,name,locationPic,price,qty}))
+                    return 
                  })
              }
              else 

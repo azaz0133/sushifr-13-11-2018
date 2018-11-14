@@ -39,19 +39,20 @@ const Products = ({
     items,filterByCatelog,add,addToCart,
     decrement,increment,qty,setCart,cart,user,
     deleteProduct,stylediv,toggle,category,categorybtn
+    ,submitbtn
 }) => (
     <div className="container" ><br/>
             <button className={categorybtn()} onClick={toggle}>category</button>
             <h3 className="text-center">Product</h3>
+            <button className={submitbtn()} onClick={add}>add to cart</button>
            <Row style={{padding:"5%"}}>
                {filterByCatelog(items).map((data,i)=>(
                     <Col xs={12} lg={4} key={data.id}> 
-                    <ProductCard {...data} add={add} addToCart={addToCart} qty ={qty[data.id]} user={user} cart={cart} setCart={setCart} deleteProduct = {deleteProduct}/>
+                    <ProductCard {...data} add={add} addToCart={addToCart}  user={user} cart={cart} setCart={setCart} deleteProduct = {deleteProduct}/>
                    </Col>
                )
                )}
             </Row>
-            <div><button className="btn btn-info btn-lg btn3d btn-block" onClick={add}>Submit</button></div>
     <br/>
     
     <div id="wrapper" className={stylediv()} >
@@ -74,7 +75,6 @@ export default compose(
     withState('isOpen','setOpen',false),
     withState('product',"setProduct",[]),
     withState('cart',"setCart",[]),
-    withState('qty','setQty',[]),
     connect(
       ({product:{items,isLoading},user,category}) => ({items,isLoading,user,category}),
       (dispatch,props) => ({
@@ -84,7 +84,8 @@ export default compose(
           add(){
             if(props.cart.length !== 0){
                  dispatch(saveProductToCart(props.cart))
-                 props.history.push('/cart')
+                 alert("add product to card success")
+                 props.setCart([])
         }
             else alert("please choose menu first")
         },
@@ -106,7 +107,10 @@ export default compose(
             return classNames({ "active": isOpen == true},"")
         },
         categorybtn: ({isOpen}) => () =>{
-            return classNames("btn btn-info",{"hambur": isOpen == true},{"hamburclick": isOpen == false})
+            return classNames("btn btn-info hambur",{"hamactive": isOpen == false})
+        },
+        submitbtn: ({isOpen}) => () =>{
+            return classNames("btn btn-primary submit",{"submitactive": isOpen == false})
         }
     }),
     lifecycle({

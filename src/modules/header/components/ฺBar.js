@@ -38,11 +38,11 @@ const LogoutComponent = styled.button `
 `
 
 const Bar = ({
-    Admin,handleClickLogin,isOpenLogin,toggle,isOpen,handleLogout,children,auth:{getToken},t
+    Admin,handleClickLogin,isOpenLogin,toggle,isOpen,handleLogout,children,auth:{getToken},t,user
 }) => (
     <div>
     <Login handleOpen={handleClickLogin} isOpen = {isOpenLogin} />
-    <Navbar className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"#4E8586"}} sticky="top" >
+    <Navbar className="navbar navbar-expand-lg navbar-dark rounded-top" style={{backgroundColor:"#4E8586"}} sticky="top" >
         <Link to='/'><img src={sushi} alt="sushi" style={{width: '40px', }} /></Link>
 
             <NavbarToggler onClick={toggle} />
@@ -78,7 +78,7 @@ const Bar = ({
                      }
                 {
                     getToken() ? 
-                    <Link to="/profile" onClick={toggle} className="nav-link"><img style={{width: '25px', }} src={Profilepic} alt="profile"/></Link>
+                    <Link to="/profile" onClick={toggle} className="nav-link"><img style={{width: '25px',borderRadius:'50%',width:'30px',height:'30px' }} src={user['gallery_id'] == null ? Profilepic : user['gallery_id']['location_pic']} alt="profile"/></Link>
                     : 
                     <div></div>
                      }
@@ -96,7 +96,7 @@ const Bar = ({
 export default compose(translate(),
 withState('Admin','setAdmin',""),
 connect(
-    (user) => ({user}),
+    ({user}) => ({user}),
      (dispatch) => ({
         saveUser(user){
             dispatch(saveSession(user))
