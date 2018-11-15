@@ -14,7 +14,7 @@ import {
     deleteCategory ,
     loadCategories,
 } from '../../../redux/action'
-import {ClipLoader} from 'react-spinners'
+import {PacmanLoader} from 'react-spinners'
 import './style.css'
 
 const Style = {
@@ -27,12 +27,12 @@ const Fetch = _ => (
                                         top: "50%",
                                         left:"50%",
                                         marginTop: "-50px",
-                                        marginLeft: "-100px"}}>
-            <ClipLoader
+                                        marginLeft: "-200px"}}>
+            <PacmanLoader
              //   className={override}
             sizeUnit={"px"}
             size={150}
-            color={'#123abc'}
+            color={'#36D7B7'}
             loading={true}
             />
     </div>

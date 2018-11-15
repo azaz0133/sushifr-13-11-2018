@@ -46,28 +46,7 @@ const Bill =({
                         </tr>
                     </table>
                 </td>
-            </tr>
-            
-            {/* <tr class="heading">
-                <td>
-                    Payment Method
-                </td>
-                
-                <td>
-                    Check #
-                </td>
-            </tr>
-            
-            <tr class="details">
-                <td>
-                    Check
-                </td>
-                
-                <td>
-                    1000
-                </td>
-            </tr> */}
-            
+            </tr>            
             <tr class="heading">
                 <td>
                     Item

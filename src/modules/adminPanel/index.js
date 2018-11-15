@@ -10,7 +10,7 @@ import {loadListToChart} from '../../redux/action'
 import styled from 'styled-components'
 import {Row,Col} from 'reactstrap'
 import {isAdmin} from '../../lib'
-import {ClipLoader} from 'react-spinners'
+import {PacmanLoader} from 'react-spinners'
 import withAdminCheck from '../../lib/hoc/withAdminCheck' 
 import ImageUploader from 'react-images-upload';
 import FileBase64 from 'react-file-base64'
@@ -39,11 +39,11 @@ const AdminPanel = ({
     <Row>
     <Col>
      <div className="container" style={{margin:"0 25%"}}><h1>ยอดขาย : วัน</h1>
-      { isLoading ?  <ClipLoader
+      { isLoading ?  <PacmanLoader
                       //   className={override}
                       sizeUnit={"px"}
                       size={150}
-                      color={'#123abc'}
+                      color={'#36D7B7'}
                       loading={true}
                       /> :
                       <Effect>

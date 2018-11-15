@@ -18,7 +18,7 @@ const Loading = ({
       //   className={override}
              sizeUnit={"px"}
               size={150}
-            color={'#123abc'}
+            color={'#36D7B7'}
             loading={true}
     />
     </div>

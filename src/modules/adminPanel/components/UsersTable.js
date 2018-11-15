@@ -8,7 +8,7 @@ import {
   import {
     loadUsers
   } from '../../../redux/action'
-  import {ClipLoader} from 'react-spinners'
+  import {PacmanLoader} from 'react-spinners'
 import {withRouter} from 'react-router-dom'
 import withAdminCheck from '../../../lib/hoc/withAdminCheck'
 
@@ -50,11 +50,11 @@ const UsersTable = ({
                                 left:"50%",
                                 marginTop: "-50px",
                                 marginLeft: "-100px"}}>
-                            <ClipLoader
+                            <PacmanLoader
                             //   className={override}
                             sizeUnit={"px"}
                             size={150}
-                            color={'#123abc'}
+                            color={'#36D7B7'}
                             loading={true}
                             />
                         </div>  : <ReactTable

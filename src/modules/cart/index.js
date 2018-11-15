@@ -25,21 +25,25 @@ const style = {
 const Loading = ({
 
 }) => (
-    <div>
-    <PacmanLoader
-      //   className={override}
-             sizeUnit={"px"}
-              size={150}
-            color={'#123abc'}
-            loading={true}
-    />
+    <div className="container" style={{position: "fixed",
+                                        top: "50%",
+                                        left:"50%",
+                                        marginTop: "-50px",
+                                        marginLeft: "-100px"}} >
+                <PacmanLoader
+                //   className={override}
+                        sizeUnit={"px"}
+                        size={150}
+                        color={'#36D7B7'}
+                        loading={true}
+                />
     </div>
 )
 const CartBound = ({
     cart:{items},Amount,checkOut,remove,user
 }) => (
     <div className="container">
-   <div class="shopping-cart"><h3 className='text-center'>YOUR ORDERS</h3><br/>
+   <div className="shopping-cart"><h3 className='text-center'>YOUR ORDERS</h3><br/>
    {items == "" ? 
    <div className="text-center" style={{marginTop:"20%"}}>
    <h4>No items in Cart</h4>
@@ -51,9 +55,9 @@ const CartBound = ({
     </div>
     ))}
             <div>
-            {items == "" ? null : <div class="text-right" style={{margin: "10px"}}>
-                    <button onClick={e=>checkOut(e)} class="btn btn-success btn3d pull-right">Checkout</button>
-                    <div class="text-right" style={{margin: "5px"}}>
+            {items == "" ? null : <div className="text-right" style={{margin: "10px"}}>
+                    <button onClick={e=>checkOut(e)} className="btn btn-success btn3d pull-right">Checkout</button>
+                    <div className="text-right" style={{margin: "5px"}}>
                         Total price: <b>฿{Amount()}.00</b>
                     </div>
                 </div>}
@@ -89,9 +93,10 @@ export default compose(
             }
             dispatch(createBill(user,idProduct,amount))
             setTimeout(_=>{
-            setLoading(false)
+              
+              setLoading(false)
                 push('/cart/bill')
-            },2000)
+            },5000)
             dispatch(removeAllProductFromCart())
         },
         remove: ({dispatch}) => (index,e) => {

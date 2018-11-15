@@ -12,7 +12,7 @@ import { withRouter } from 'react-router-dom'
 import './style.css'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import {ClipLoader} from 'react-spinners'
+import {PacmanLoader} from 'react-spinners'
 
 
 const EditCategory = ({
@@ -20,11 +20,11 @@ const EditCategory = ({
 }) => (
     <div className="container"><br/>
     <h3 className='text-center'>Edit product</h3><br/>
-    {isLoading?                             <ClipLoader
+    {isLoading?                             <PacmanLoader
                                             //   className={override}
                                             sizeUnit={"px"}
                                             size={150}
-                                            color={'#123abc'}
+                                            color={'#36D7B7'}
                                             loading={true}
                                             /> :
                                             <Form className="container text-center"> 

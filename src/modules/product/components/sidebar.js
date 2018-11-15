@@ -6,7 +6,7 @@ const sidebar = (
 ) => (
     category.items.map( item=>{
     return(
-        <li>
+        <li key={item.id}>
             <Link className='hover-underline-animation' to={`/menu/products/${item.id}`} >{item['name_en']}</Link>
         </li>
     )

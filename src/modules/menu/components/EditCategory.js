@@ -85,7 +85,7 @@ export default compose(
     ),
     lifecycle({
         componentDidMount(){
-            const save =  this.props.items.filter( data => data.id == this.props.match.params.id)
+            const save =  this.props.items.filter( data => data.id === this.props.match.params.id)
             this.props.setDetail({
                 name_en:save[0]['name_en'],
                 name_th:save[0]['name_th'],

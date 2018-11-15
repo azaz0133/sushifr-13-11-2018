@@ -11,7 +11,7 @@ import { uploadGallery,upToCloud,createProduct } from '../../../redux/action'
 import FileBase64 from 'react-file-base64'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css'
-import {ClipLoader} from 'react-spinners'
+import {PacmanLoader} from 'react-spinners'
 
 const CreateProduct = ({
  name,detail,setDetail,setName,handleInput,nameOfPic,
@@ -27,11 +27,11 @@ const CreateProduct = ({
                                         left:"50%",
                                         marginTop: "-50px",
                                         marginLeft: "-100px"}}>
-                                            <ClipLoader
+                                            <PacmanLoader
                                             //   className={override}
                                             sizeUnit={"px"}
                                             size={150}
-                                            color={'#123abc'}
+                                            color={'#36D7B7'}
                                             loading={true}
                                             />
                                         </div> :  

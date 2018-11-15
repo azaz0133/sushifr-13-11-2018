@@ -10,7 +10,7 @@ const Profile = ({ user}) => (
     <div style={{textAlign:"center"}} ><h3>Profile</h3></div><hr/><br/><br/>
         <Row>
         <div className="col-md-6 img" style={{textAlign:"center",padding:"5%"}}>
-        <img src={user['gallery_id'] == null ? Profilepic : user['gallery_id']['location_pic'] } style={{width: '25px',borderRadius:'50%',width:'300px',height:'300px' }} alt="profile" className="img-rounded"></img>
+        <img src={user['gallery_id'] == null ? Profilepic : user['gallery_id']['location_pic'] } style={{borderRadius:'50%',width:'300px',height:'300px' }} alt="profile" className="img-rounded"></img>
       </div>
       <div style={{borderLeft: "3px solid",padding:"5%"}}>
       <blockquote>

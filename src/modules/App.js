@@ -69,7 +69,7 @@ const App= (user) => (
         </Header>
         </div>
         <div className='container rounded-bottom' style={{height:"30px",backgroundColor:"#4E8586"}}></div>
-         {/* <Devtool />  */}
+         <Devtool /> 
         <Footer/>
     </div>
 )

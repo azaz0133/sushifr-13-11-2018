@@ -1,12 +1,13 @@
 import React from 'react'
 import {
- compose, withHandlers, withState
+ compose, withHandlers, withState, lifecycle
 } from 'recompose'
 import {Link} from 'react-router-dom'
 import './style.scss'
 import styled from 'styled-components'
 import {withAuth} from '../../../lib/'
 import classNames from 'classnames'
+import {withRouter} from 'react-router-dom'
 
 const ButtonPush = styled.button`
 background: #0087ca;
@@ -61,7 +62,7 @@ const ProductCard = ({
                 </div>
                 <div>
                 {cancel ?
-                    <button className="btn btn-danger btn3d btn-block" onClick={cancelThis}>Cancel</button>:
+                    <button className="btn btn-danger btn3d btn-block" onClick={(e)=>cancelThis(id)}>Cancel</button>:
                     <button className="btn btn-info btn3d btn-block" onClick={(e)=>addToCart(id,name_th,location_pic,price,qty,e)}>add</button>
                 }
                 {user.is_admin ?
@@ -81,6 +82,7 @@ const ProductCard = ({
 )
 
 export default compose(
+    withRouter,
     withAuth,
     withState('product','setProduct',{}),
     withState('cancel','setCancel',false),
@@ -124,12 +126,13 @@ export default compose(
         stylediv: () => (qty) =>{
             return classNames({ "add-to-cart": qty === 0},{"add-to-carts": qty !== 0})
         },
-        cancelThis:({setCancel,setQty,setCart})=>()=>{
-            setCart([])
+        cancelThis:({setCancel,setQty,cart})=>(ID)=>{
+            const cartIndex = cart.findIndex((data) => {
+                return data.id == ID
+              })
+            cart.splice(cartIndex, 1)
             setQty(0)
             setCancel(false)
-        }
+        },
     })
 )(ProductCard)
-
-

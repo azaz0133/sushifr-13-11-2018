@@ -14,7 +14,7 @@ import Sidebar from './components/sidebar'
 import {Row,Col} from 'reactstrap'
 import {withRouter} from 'react-router-dom'
 import './style.css'
-import {ClipLoader, ClimbingBoxLoader} from 'react-spinners'
+import {PacmanLoader, ClimbingBoxLoader} from 'react-spinners'
 import  classNames  from 'classnames'
 import Icon from '../../asset/IconSE2.jpg'
 
@@ -24,11 +24,11 @@ const Fetch = _ => (
                                         left:"50%",
                                         marginTop: "-50px",
                                         marginLeft: "-100px"}}>
-            <ClipLoader
+            <PacmanLoader
              //   className={override}
             sizeUnit={"px"}
             size={150}
-            color={'#123abc'}
+            color={'#36D7B7'}
             loading={true}
             />
     </div>
@@ -39,7 +39,7 @@ const Products = ({
     items,filterByCatelog,add,addToCart,
     decrement,increment,qty,setCart,cart,user,
     deleteProduct,stylediv,toggle,category,categorybtn
-    ,submitbtn
+    ,submitbtn,addcartclicked
 }) => (
     <div className="container" ><br/>
             <button className={categorybtn()} onClick={toggle}>category</button>
@@ -48,7 +48,7 @@ const Products = ({
            <Row style={{padding:"5%"}}>
                {filterByCatelog(items).map((data,i)=>(
                     <Col xs={12} lg={4} key={data.id}> 
-                    <ProductCard {...data} add={add} addToCart={addToCart}  user={user} cart={cart} setCart={setCart} deleteProduct = {deleteProduct}/>
+                    <ProductCard {...data} add={add} addToCart={addToCart} addcartclicked={addcartclicked} user={user} cart={cart} setCart={setCart} deleteProduct = {deleteProduct}/>
                    </Col>
                )
                )}
@@ -75,6 +75,7 @@ export default compose(
     withState('isOpen','setOpen',false),
     withState('product',"setProduct",[]),
     withState('cart',"setCart",[]),
+    withState('addcartclicked','setaddcartclicked',false),
     connect(
       ({product:{items,isLoading},user,category}) => ({items,isLoading,user,category}),
       (dispatch,props) => ({
@@ -83,9 +84,13 @@ export default compose(
           },
           add(){
             if(props.cart.length !== 0){
+                console.log(props.cart)
+                 props.setaddcartclicked(true)
                  dispatch(saveProductToCart(props.cart))
                  alert("add product to card success")
                  props.setCart([])
+                 props.setaddcartclicked(false)
+                 window.location.reload();
         }
             else alert("please choose menu first")
         },

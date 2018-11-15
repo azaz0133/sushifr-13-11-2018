@@ -23,7 +23,7 @@ import { compose } from 'redux';
 import constants from '../../constants';
 import {connect} from 'react-redux'
 import {uploadGallery,upToCloud,register} from '../../redux/action'
-import {ClipLoader} from 'react-spinners'
+import {PacmanLoader} from 'react-spinners'
 import {withRouter} from 'react-router-dom'
 
 const SignUp = ({
@@ -42,11 +42,11 @@ const SignUp = ({
                                         left:"50%",
                                         marginTop: "-50px",
                                         marginLeft: "-100px"}}>
-                                            <ClipLoader
+                                            <PacmanLoader
                                             //   className={override}
                                             sizeUnit={"px"}
                                             size={150}
-                                            color={'#123abc'}
+                                            color={'#36D7B7'}
                                             loading={true}
                                             /> 
                             </div>     :    
@@ -195,13 +195,14 @@ export default compose(
           address,
           tel,
           username,
-          password,
-          gallery_id:gallery['galleryId']
+          password, 
+          gallery_id:gallery['galleryId'] > 0 ? gallery['galleryId'] : null
        }
        dispatch(register(body))
        setTimeout(() => {
           window.location.href = '/'
-       }, 500);
+          alert('register success please log-in')
+       }, 1000);
     }
   },
   Onchange : ({setAddress,setFname,setLname,setEmail,setTel,setUsername,setPassword}) => e => {

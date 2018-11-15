@@ -8,7 +8,7 @@ import {
 import { connect } from 'react-redux'
 import { uploadGallery ,createCategory,upToCloud } from '../../../redux/action'
 import FileBase64 from 'react-file-base64'
-import {ClipLoader} from 'react-spinners'
+import {PacmanLoader} from 'react-spinners'
 import {withRouter} from 'react-router-dom'
 
 const CreateCategory = ({
@@ -23,11 +23,11 @@ const CreateCategory = ({
                                         left:"50%",
                                         marginTop: "-50px",
                                         marginLeft: "-100px"}}>
-                                            <ClipLoader
+                                            <PacmanLoader
                                             //   className={override}
                                             sizeUnit={"px"}
                                             size={150}
-                                            color={'#123abc'}
+                                            color={'#36D7B7'}
                                             loading={true}
                                             />
                                         </div> :  
