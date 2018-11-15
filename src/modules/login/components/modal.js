@@ -23,7 +23,7 @@ const ModalLogin = ({
                                   //   className={override}
                                   sizeUnit={"px"}
                                   size={150}
-                                  color={'#36D7B7'}
+                                  color={'#123abc'}
                                   loading={true}
                                   />  : 
                                   <Form>

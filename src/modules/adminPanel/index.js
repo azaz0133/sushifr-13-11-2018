@@ -12,8 +12,7 @@ import {Row,Col} from 'reactstrap'
 import {isAdmin} from '../../lib'
 import {PacmanLoader} from 'react-spinners'
 import withAdminCheck from '../../lib/hoc/withAdminCheck' 
-import ImageUploader from 'react-images-upload';
-import FileBase64 from 'react-file-base64'
+
 const BoundChart = styled.div`
  width:500px;
  height:500px;
@@ -68,19 +67,6 @@ const AdminPanel = ({
     }</div>
     </Col>
   </Row>
-  <FileBase64
-                            multiple={ true }
-                            onDone={uri => console.log(uri)} 
-                            />
-  <ImageUploader
-                withIcon={true}
-                buttonText='Choose images'
-                onChange={onDrop}
-                imgExtension={['.jpg', '.gif', '.png']}
-                maxFileSize={5242880}
-                withPreview={true}
-            />
-  
   </div>
 )
 export default compose(
